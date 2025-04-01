@@ -27,7 +27,19 @@ A RESTful API for managing tasks with advanced features including authentication
 - Error handling middleware
 - CORS enabled
 
-## API Endpoints
+## API Base URL
+
+The API is live at: `https://task-management-api-jzja.onrender.com`
+
+All endpoints should be prefixed with this base URL. For example:
+- Register: `https://task-management-api-jzja.onrender.com/api/auth/register`
+- Login: `https://task-management-api-jzja.onrender.com/api/auth/login`
+- Get Tasks: `https://task-management-api-jzja.onrender.com/api/tasks`
+- Create Task: `https://task-management-api-jzja.onrender.com/api/tasks`
+- Update Task: `https://task-management-api-jzja.onrender.com/api/tasks/:id`
+- Delete Task: `https://task-management-api-jzja.onrender.com/api/tasks/:id`
+
+Note: Replace `:id` with the actual task ID when making update or delete requests.
 
 ### Authentication
 - `POST /api/auth/register` - Register a new user
