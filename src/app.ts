@@ -14,8 +14,15 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/health', (req, res) => {
-  res.send('OK');
+app.use("/", (req, res) => {
+  res.json({
+    message: "Welcome to the Task Manager API 👋",
+  });
+});
+app.use("/api/health", (req, res) => {
+  res.json({
+    message: "API health is good 👍",
+  });
 });
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
@@ -26,17 +33,17 @@ connectDB();
 // Global Error Handler
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
-  
+
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   res.status(statusCode).json({
     message: err.message,
-    stack: process.env.NODE_ENV === 'production' ? '🥞' : err.stack,
+    stack: process.env.NODE_ENV === "production" ? "🥞" : err.stack,
   });
 });
 
 // 404 Handler
 app.use((req: Request, res: Response) => {
-  res.status(404).json({ message: 'Resource not found' });
+  res.status(404).json({ message: "Resource not found" });
 });
 
 const PORT = process.env.PORT || 3000;
